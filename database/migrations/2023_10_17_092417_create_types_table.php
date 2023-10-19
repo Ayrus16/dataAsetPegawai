@@ -6,21 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**P
+    /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('devices', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asset_id');
             $table->timestamps();
-            $table->foreignId('type_id');
-            $table->string('brand');
-            $table->string('deviceModel');
-            $table->string('serialNumber')->unique();
-
-
+            $table->string('deviceType');
+            $table->string('slug')->unique();
         });
     }
 
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('devices');
+        Schema::dropIfExists('types');
     }
 };

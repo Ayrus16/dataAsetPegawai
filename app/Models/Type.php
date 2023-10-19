@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Device extends Model
+class Type extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function asset(){
-        return $this->belongsTo(Asset::class);
-    }
-
-    public function type(){
-        return $this->belongsTo(Type::class);
+    public function device(){
+        return $this->hasMany(Device::class);
     }
 }
